@@ -7,7 +7,7 @@ part of 'product_repository.dart';
 // **************************************************************************
 
 String _$productsRepositoryHash() =>
-    r'0672b296d1abfccbd286da1e5f5b573812a5f529';
+    r'4f31a14dd59217568001d22185bc764262044dfe';
 
 /// See also [productsRepository].
 @ProviderFor(productsRepository)
@@ -23,7 +23,7 @@ final productsRepositoryProvider =
 );
 
 typedef ProductsRepositoryRef = AutoDisposeProviderRef<ProductRepository>;
-String _$fetchProductsHash() => r'ec48a43fa5ac2a19299ea5efe1089946e72b8ce9';
+String _$fetchProductsHash() => r'46b4a7889c4022f3f2719f670bdecb71cfb6b550';
 
 /// See also [fetchProducts].
 @ProviderFor(fetchProducts)

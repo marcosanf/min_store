@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_store/features/products/presentation/widgets/product_list.dart';
 
-class ProductPage extends StatefulWidget {
+class ProductPage extends ConsumerWidget {
   const ProductPage({super.key});
 
   @override
-  State<ProductPage> createState() => _ProductPageState();
-}
-
-class _ProductPageState extends State<ProductPage> {
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold();
+  Widget build(BuildContext context, WidgetRef ref) {
+    return Scaffold(
+      appBar: AppBar(title: const Text("Produtos")),
+      body: const ProductList(),
+    );
   }
 }
