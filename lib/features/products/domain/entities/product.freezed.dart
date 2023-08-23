@@ -22,7 +22,7 @@ Product _$ProductFromJson(Map<String, dynamic> json) {
 mixin _$Product {
   int get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
-  int get price => throw _privateConstructorUsedError;
+  double get price => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
   String get category => throw _privateConstructorUsedError;
   String get image => throw _privateConstructorUsedError;
@@ -41,7 +41,7 @@ abstract class $ProductCopyWith<$Res> {
   $Res call(
       {int id,
       String title,
-      int price,
+      double price,
       String description,
       String category,
       String image,
@@ -83,7 +83,7 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
       price: null == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
-              as int,
+              as double,
       description: null == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
@@ -122,7 +122,7 @@ abstract class _$$_ProductCopyWith<$Res> implements $ProductCopyWith<$Res> {
   $Res call(
       {int id,
       String title,
-      int price,
+      double price,
       String description,
       String category,
       String image,
@@ -162,7 +162,7 @@ class __$$_ProductCopyWithImpl<$Res>
       price: null == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
-              as int,
+              as double,
       description: null == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
@@ -203,7 +203,7 @@ class _$_Product with DiagnosticableTreeMixin implements _Product {
   @override
   final String title;
   @override
-  final int price;
+  final double price;
   @override
   final String description;
   @override
@@ -271,7 +271,7 @@ abstract class _Product implements Product {
   const factory _Product(
       {required final int id,
       required final String title,
-      required final int price,
+      required final double price,
       required final String description,
       required final String category,
       required final String image,
@@ -284,7 +284,7 @@ abstract class _Product implements Product {
   @override
   String get title;
   @override
-  int get price;
+  double get price;
   @override
   String get description;
   @override

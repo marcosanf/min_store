@@ -6,7 +6,7 @@ part 'rating.g.dart';
 @Freezed()
 class Rating with _$Rating {
   const factory Rating({
-    required int rate,
+    required double rate,
     required int count,
   }) = _Rating;
 

@@ -20,7 +20,7 @@ Rating _$RatingFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Rating {
-  int get rate => throw _privateConstructorUsedError;
+  double get rate => throw _privateConstructorUsedError;
   int get count => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -33,7 +33,7 @@ abstract class $RatingCopyWith<$Res> {
   factory $RatingCopyWith(Rating value, $Res Function(Rating) then) =
       _$RatingCopyWithImpl<$Res, Rating>;
   @useResult
-  $Res call({int rate, int count});
+  $Res call({double rate, int count});
 }
 
 /// @nodoc
@@ -56,7 +56,7 @@ class _$RatingCopyWithImpl<$Res, $Val extends Rating>
       rate: null == rate
           ? _value.rate
           : rate // ignore: cast_nullable_to_non_nullable
-              as int,
+              as double,
       count: null == count
           ? _value.count
           : count // ignore: cast_nullable_to_non_nullable
@@ -71,7 +71,7 @@ abstract class _$$_RatingCopyWith<$Res> implements $RatingCopyWith<$Res> {
       __$$_RatingCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int rate, int count});
+  $Res call({double rate, int count});
 }
 
 /// @nodoc
@@ -91,7 +91,7 @@ class __$$_RatingCopyWithImpl<$Res>
       rate: null == rate
           ? _value.rate
           : rate // ignore: cast_nullable_to_non_nullable
-              as int,
+              as double,
       count: null == count
           ? _value.count
           : count // ignore: cast_nullable_to_non_nullable
@@ -109,7 +109,7 @@ class _$_Rating with DiagnosticableTreeMixin implements _Rating {
       _$$_RatingFromJson(json);
 
   @override
-  final int rate;
+  final double rate;
   @override
   final int count;
 
@@ -155,13 +155,13 @@ class _$_Rating with DiagnosticableTreeMixin implements _Rating {
 }
 
 abstract class _Rating implements Rating {
-  const factory _Rating({required final int rate, required final int count}) =
-      _$_Rating;
+  const factory _Rating(
+      {required final double rate, required final int count}) = _$_Rating;
 
   factory _Rating.fromJson(Map<String, dynamic> json) = _$_Rating.fromJson;
 
   @override
-  int get rate;
+  double get rate;
   @override
   int get count;
   @override
