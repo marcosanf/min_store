@@ -20,6 +20,7 @@ class ProductList extends ConsumerWidget {
         childrenDelegate: SliverChildBuilderDelegate((context, index) {
           final product = products[index];
           return ProductTile(
+            productId: product.id,
             title: product.title,
             price: product.price.toString(),
             image: product.image,

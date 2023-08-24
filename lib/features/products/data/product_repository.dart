@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
@@ -23,13 +24,19 @@ class ProductRepository {
         },
       );
 
+  Future<Product> fetchProductById(int id, {CancelToken? cancelToken}) => _run(
+        request: () => dio.get(
+          'https://fakestoreapi.com/products/$id',
+          cancelToken: cancelToken,
+        ),
+        parse: (data) => Product.fromJson(data),
+      );
+
   Future<T> _run<T>({
     required Future<Response> Function() request,
     required T Function(dynamic) parse,
   }) async {
     try {
-      // add artificial delay to test loading UI
-      //await Future.delayed(const Duration(seconds: 1));
       final response = await request();
       switch (response.statusCode) {
         case 200:
@@ -45,7 +52,7 @@ class ProductRepository {
   }
 }
 
-@riverpod
+@Riverpod(keepAlive: true)
 ProductRepository productsRepository(ProductsRepositoryRef ref) {
   return ProductRepository(dio: ref.watch(dioProvider));
 }
@@ -53,4 +60,31 @@ ProductRepository productsRepository(ProductsRepositoryRef ref) {
 @riverpod
 Future<List<Product>> fetchProducts(FetchProductsRef ref) {
   return ref.watch(productsRepositoryProvider).fetchProducts();
+}
+
+@riverpod
+Future<Product> fetchProductById(FetchProductByIdRef ref, int productId) {
+  final link = ref.keepAlive();
+  Timer? timer;
+  final cancelToken = CancelToken();
+
+  ref.onDispose(() {
+    timer?.cancel();
+    cancelToken.cancel();
+  });
+
+  ref.onCancel(() {
+    // start a 30 second timer
+    timer = Timer(const Duration(seconds: 5), () {
+      // dispose on timeout
+      link.close();
+    });
+  });
+  // If the provider is listened again after it was paused, cancel the timer
+  ref.onResume(() {
+    timer?.cancel();
+  });
+  return ref
+      .watch(productsRepositoryProvider)
+      .fetchProductById(productId, cancelToken: cancelToken);
 }
